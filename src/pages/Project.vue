@@ -2,7 +2,7 @@
     <!-- <div v-for="project in projects" class="portfolio-item"> -->
     <div class="portfolio-item">    
         <div class="image">
-            <img v-bind:src="'../img/' + image" alt="" />
+            <img v-bind:src="image" alt="" />
         </div>
         <div class="hover-items">
             <div
