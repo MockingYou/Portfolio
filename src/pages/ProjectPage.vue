@@ -4,7 +4,7 @@
             <h2>My <span>Projects</span></h2>
         </div>
         <p class="port-text">
-            Here are some of my projects that I've done in various programming languages.
+            Here are some of the projects that I've done in various programming languages.
         </p>
         <div class="portfolios">
             <div class="portfolio-item"  v-for="project in projects">

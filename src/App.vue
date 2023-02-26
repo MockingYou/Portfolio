@@ -8,26 +8,6 @@
       </v-icon>
       </base-button>
     </div>
-    <!-- <base-button class="control  control-1 active" link to="/" >
-      <v-icon>
-        mdi-home
-      </v-icon>
-    </base-button>
-    <base-button class="control  control-1 active" link to="/about" >
-      <v-icon>
-        mdi-account
-      </v-icon>
-    </base-button>
-    <base-button class="control  control-1 active" link to="/projects" >
-      <v-icon>
-        mdi-briefcase
-      </v-icon>
-    </base-button>
-    <base-button class="control  control-1 active" link to="/contact" >
-      <v-icon>
-        mdi-email-open
-      </v-icon>
-    </base-button> -->
   </div>
   <div class="theme-btn">
     <theme-button @click="updateTheme"></theme-button>  
@@ -81,9 +61,7 @@ export default {
     ]
   }),
   created: function() {
-
     useRouter().push({ path: '/' })
-
       this.buttons.forEach(button => {
         if(button.link === this.$route.path ) {
           button.selected = true
@@ -92,6 +70,12 @@ export default {
       })
       
 
+  },
+  mounted() {
+      if(localStorage.getItem('theme')) {
+        let element = document.body;
+        element.classList.toggle('light-mode')
+    }
   },
   computed: {
     currentRoute() {
@@ -108,6 +92,11 @@ export default {
     updateTheme() {
         let element = document.body;
         element.classList.toggle('light-mode')
+        if(localStorage.getItem('theme')) {
+          localStorage.removeItem('theme')
+        } else {
+          localStorage.setItem('theme', 'light-mode')
+        }
     },
     selectPage(button) {
       this.buttons.forEach(button => {
@@ -116,7 +105,7 @@ export default {
       })
       button.selected = true
       button.buttonClass += ' active-btn'
-    }
+    },
   }
 }
 </script>
