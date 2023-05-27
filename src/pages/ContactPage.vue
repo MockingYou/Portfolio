@@ -65,17 +65,17 @@
                 <div class="right-contact">
                     <form action="" class="contact-form">
                         <div class="input-control i-c-2">
-                            <input type="text" required placeholder="YOUR NAME">
-                            <input type="email" required placeholder="YOUR EMAIL">
+                            <input type="text" v-model="name" required placeholder="YOUR NAME">
+                            <input type="email" v-model="email" required placeholder="YOUR EMAIL">
                         </div>
                         <div class="input-control">
-                            <input type="text" required placeholder="ENTER SUBJECT">
+                            <input type="text" v-model="subject" required placeholder="ENTER SUBJECT">
                         </div>
                         <div class="input-control">
-                            <textarea name="" id="" cols="15" rows="8" placeholder="Message Here..."></textarea>
+                            <textarea v-model="message" id="" cols="15" rows="8" placeholder="Message Here..."></textarea>
                         </div>
-                        <div class="submit-btn">
-                            <DownloadButton />
+                        <div>
+                            <button class="mail-btn" @click="sendEmail">Send Email</button>
                         </div>
                     </form>
                 </div>
@@ -85,29 +85,37 @@
 </template>
 
 <script>
-import DownloadButton from '../components/ui/DownloadButton.vue'
+import axios from 'axios'
+
 
 export default {
-    components: {
-        DownloadButton
+    data() {
+      return {
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      };
     },
     methods: {
-        sendEmail() {
-            const options = {
-        	    method: 'PATCH',
-        	    headers: {
-        		    'content-type': 'application/json',
-        		    'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
-        		    'X-RapidAPI-Host': 'rapidprod-sendgrid-v1.p.rapidapi.com'
-        	    },
-        	    body: '{"type":"stats_notification","email_to":"example@test.com","frequency":"daily"}'
-            };
-
-            fetch('https://rapidprod-sendgrid-v1.p.rapidapi.com/alerts/%7Balert_id%7D', options)       
-	            .then(response => response.json())     
-	            .then(response => console.log(response))       
-	            .catch(err => console.error(err));
-        }
-    }
+        async sendEmail() {
+          try {
+            await axios.post('/send-email', {
+              name: this.name,
+              email: this.email,
+              subject: this.subject,
+              message: this.message,
+            });
+            console.log('Email sent successfully');
+            // Reset form fields
+            this.name = '';
+            this.email = '';
+            this.subject = '';
+            this.message = '';
+          } catch (error) {
+            console.error('Error sending email:', error);
+          }
+        },
+    },
 }
 </script>
