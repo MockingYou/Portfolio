@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div class="right-contact">
-                    <form action="" class="contact-form">
+                    <div class="contact-form">
                         <div class="input-control i-c-2">
                             <input type="text" v-model="name" required placeholder="YOUR NAME">
                             <input type="email" v-model="email" required placeholder="YOUR EMAIL">
@@ -77,7 +77,7 @@
                         <div>
                             <button class="mail-btn" @click="sendEmail">Send Email</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -99,22 +99,26 @@ export default {
     },
     methods: {
         async sendEmail() {
-          try {
-            await axios.post('/send-email', {
-              name: this.name,
-              email: this.email,
-              subject: this.subject,
-              message: this.message,
-            });
-            console.log('Email sent successfully');
+            try {
+                await axios.get('http://localhost:5000/send-email', {
+                  params: {
+                    name: this.name,
+                    email: this.email,
+                    subject: this.subject,
+                    message: this.message,
+                }
+                })
+                .then(response => {
+                    console.log(response.data);
+                })
+            } catch(error) {
+                console.error(error);
+            };
             // Reset form fields
             this.name = '';
             this.email = '';
             this.subject = '';
             this.message = '';
-          } catch (error) {
-            console.error('Error sending email:', error);
-          }
         },
     },
 }
