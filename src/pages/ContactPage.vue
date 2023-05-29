@@ -100,7 +100,7 @@ export default {
     methods: {
         async sendEmail() {
             try {
-                await axios.get('http://localhost:5000/send-email', {
+                await axios.get('https://email-sender-xkmk.onrender.com//send-email', {
                   params: {
                     name: this.name,
                     email: this.email,
