@@ -1,9 +1,0 @@
-# Environmental variables
-.env
-
-# Dependency directories
-node_modules/
-
-# Generated files
-dist/
-build/

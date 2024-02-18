@@ -1,0 +1,10 @@
+{
+	"db": {
+		"uri": "mysql://avnadmin:AVNS_LisrSD57OErmlmCfC--@portfolio-portfolio-project-data.a.aivencloud.com:26953/defaultdb?ssl-mode=REQUIRED",
+		"name": "defaultdb",
+		"host": "portfolio-portfolio-project-data.a.aivencloud.com",
+		"port": "26953",
+		"user": "avnadmin",
+		"password": "AVNS_LisrSD57OErmlmCfC--"
+	}
+}

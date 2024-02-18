@@ -99,27 +99,28 @@ export default {
     },
     methods: {
         async sendEmail() {
+            const emailData = {
+                name: this.name,
+                email: this.email,
+                subject: this.subject,
+                message: this.message,
+            }
             try {
-                await axios.get('https://email-sender-xkmk.onrender.com//send-email', {
-                  params: {
-                    name: this.name,
-                    email: this.email,
-                    subject: this.subject,
-                    message: this.message,
+                const response = await axios.post('http://localhost:5027/api/Project/SendEmail', emailData, 
+                {
+                    withCredentials: false 
+                });
+                console.log(response.data);
+                if (response.data === 'Email sent') {
+                    this.name = '';
+                    this.email = '';
+                    this.subject = '';
+                    this.message = '';
                 }
-                })
-                .then(response => {
-                    console.log(response.data);
-                })
-            } catch(error) {
+            } catch (error) {
                 console.error(error);
-            };
-            // Reset form fields
-            this.name = '';
-            this.email = '';
-            this.subject = '';
-            this.message = '';
-        },
+            }
+        }
     },
 }
 </script>
