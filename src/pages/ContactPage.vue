@@ -106,7 +106,7 @@ export default {
                 message: this.message,
             }
             try {
-                const response = await axios.post('http://localhost:5027/api/Project/SendEmail', emailData, 
+                const response = await axios.post('https://portfolio-service-1j6y.onrender.com/api/Project/SendEmail', emailData, 
                 {
                     withCredentials: false 
                 });

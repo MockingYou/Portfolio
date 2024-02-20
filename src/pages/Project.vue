@@ -8,9 +8,8 @@
             <div class="project-desc" v-text="description" />
             <ProjectButton :link="link" :icon="icon" /> 
         </div>
-        //TODO change the sql entries for languages to be setup as objects with language and icon
         <span v-for="(value, key, index) in languages" :key="key">
-            {{ key }}: <v-icon> {{ value }}</v-icon>
+            <v-icon> {{ value }}</v-icon>
             <template v-if="index !== Object.keys(languages).length - 1">, </template>
         </span>
     </div>

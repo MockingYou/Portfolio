@@ -25,9 +25,10 @@ export default defineComponent({
     },
     setup() {
         const store = useStore(); 
-        store.fetchProjects();
+        const projects = store.projects; 
+        console.log(projects)
         return {
-            projects: store.projects
+            projects
         };
     }
 });
