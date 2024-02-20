@@ -8,11 +8,12 @@
             <div class="project-desc" v-text="description" />
             <ProjectButton :link="link" :icon="icon" /> 
         </div>
-        <span v-for="(value, key, index) in languages" :key="key">
-            <v-icon> {{ value }}</v-icon>
-            <template v-if="index !== Object.keys(languages).length - 1">, </template>
-        </span>
     </div>
+    <span v-for="(language, key, index) in languages" :key="key">
+        <img :src="language" :alt="key" v-if="language.includes('/img/')" :style="{ paddingTop: '5px', width: '30px', height: '30px', color: 'white' }" />
+        <v-icon v-else>{{ language}}</v-icon>
+        <template v-if="index !== Object.keys(languages).length - 1">, </template>
+    </span>
 </template>
 
 <script>
@@ -42,19 +43,7 @@ export default {
         },
         resetImage() {
             this.isColorized = false;
-        },
-        isLastItem(key, obj) {
-            return key === Object.keys(obj)[Object.keys(obj).length - 1];
-        },
-        processLanguages() {
-            languages.forEach(language => {
-                if(language.icon.includes("/img/")) {
-                    // use an img in html
-                } else {
-                    // use v-icon
-                }  
-            });
-        } 
+        }
     }
 };
 </script>
@@ -72,5 +61,4 @@ export default {
 .portfolio-item .image:hover img {
     filter: grayscale(0%);
 }
-
 </style>

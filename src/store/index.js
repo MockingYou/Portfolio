@@ -11,7 +11,6 @@ export const useStore = defineStore({
       try {
         const response = await axios.get('https://portfolio-service-1j6y.onrender.com/api/Project/GetAll');
         const projects = response.data.data;
-        console.log(projects)
         this.setProjects(projects);
         return projects; 
       } catch (error) {
