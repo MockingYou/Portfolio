@@ -33,7 +33,6 @@ import BaseButton from './components/ui/BaseButton.vue';
 import ThemeButton from './components/ui/ThemeButton.vue';
 import { RouterView, useRouter } from 'vue-router'
 import ProjectPage from './pages/ProjectPage.vue'
-
 import { mdiHome, mdiAccount, mdiBriefcase, mdiEmailOpen } from "@mdi/js";
 
 export default {
@@ -125,7 +124,7 @@ export default {
     HomePage,
     BaseButton,
     ProjectPage,
-    ThemeButton
+    ThemeButton,
   },
   methods: {
     updateTheme() {
