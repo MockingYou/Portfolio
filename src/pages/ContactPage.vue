@@ -1,5 +1,7 @@
 <template>
     <section class="section sec4 contact active" id="contact">
+        <div class="gradient-box-top"></div>
+        <div class="gradient-box-bottom"></div>
         <div class="contact-container">
             <div class="main-title">
                 <h2>Contact <span>Me</span></h2>

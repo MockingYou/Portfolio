@@ -1,5 +1,7 @@
 <template>
     <section class="section sec3 active" id="portfolio">
+        <div class="gradient-box-top"></div>
+        <div class="gradient-box-bottom"></div>
 
         <div>
             <div class="main-title">

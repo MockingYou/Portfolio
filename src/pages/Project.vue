@@ -4,6 +4,9 @@
         <img :src="image" alt="" :style="{ filter: isColorized ? 'grayscale(0%)' : 'grayscale(100%)' }" />
       </div>
       <div class="hover-items" @mouseover="colorizeImage" @mouseleave="resetImage" >
+        <div class="gradient-box-top-mini"></div>
+        <div class="gradient-box-bottom-mini"></div>
+
         <div v-text="title" />
         <div class="project-desc" v-text="description" />
         <ProjectButton :link="link" :icon="icon" />

@@ -1,6 +1,6 @@
 <template>
   <router-view class="router-view" v-slot="{Component}">
-    <Transition name="page-slide" mode="out-in">
+    <Transition name="page-opacity" mode="out-in">
       <component :is="Component" />
     </Transition>
   </router-view>
@@ -149,14 +149,13 @@ export default {
 </script>
 
 <style scoped>
-  .page-slide-enter-active,
-  .page-slide-leave-active {
-    transition: 400ms ease all;
+  .page-opacity-enter-active,
+  .page-opacity-leave-active {
+    transition: 600ms ease all;
   }
 
-  .page-slide-enter-from,
-  .page-slide-leave-to {
+  .page-opacity-enter-from,
+  .page-opacity-leave-to {
     opacity: 0;
-    transform: translateY(100px);
   }
 </style>
