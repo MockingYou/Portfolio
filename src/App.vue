@@ -1,5 +1,9 @@
 <template>
-  <router-view></router-view>
+  <router-view class="router-view" v-slot="{Component}">
+    <Transition name="page-slide" mode="out-in">
+      <component :is="Component" />
+    </Transition>
+  </router-view>
   <div class="controls">
     <div v-for="button in buttonsLeft">
       <base-button @click="selectPage(button)" :class="button.buttonClass" link :to="button.link" >
@@ -144,3 +148,16 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .page-slide-enter-active,
+  .page-slide-leave-active {
+    transition: 400ms ease all;
+  }
+
+  .page-slide-enter-from,
+  .page-slide-leave-to {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+</style>

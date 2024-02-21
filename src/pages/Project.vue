@@ -3,17 +3,24 @@
       <div class="image" @mouseover="colorizeImage" @mouseleave="resetImage">
         <img :src="image" alt="" :style="{ filter: isColorized ? 'grayscale(0%)' : 'grayscale(100%)' }" />
       </div>
-      <div class="hover-items" @mouseover="colorizeImage" @mouseleave="resetImage" :style="{ opacity: 0.95 }">
+      <div class="hover-items" @mouseover="colorizeImage" @mouseleave="resetImage" >
         <div v-text="title" />
         <div class="project-desc" v-text="description" />
         <ProjectButton :link="link" :icon="icon" />
       </div>
     </div>
-    <span v-for="(language, key, index) in languages" :key="key">
-      <img :src="language" :alt="key" v-if="language.includes('/img/')" :style="{ paddingTop: '5px', width: '30px', height: '30px', color: 'white' }" />
-      <v-icon v-else>{{ language }}</v-icon>
-      <template v-if="index !== Object.keys(languages).length - 1">, </template>
-    </span>
+    <div style="display: flex; align-items: center;">
+  <span v-for="(language, key, index) in languages" :key="key">
+    <div v-if="language.includes('/img/')" style="display: inline-block; margin-right: 5px;">
+      <img :src="language" :alt="key" :style="{ width: '24px', height: '24px', filter: 'brightness(0) invert(1)', marginTop: '10px', marginLeft: '3px' }" />
+    </div>
+    <div v-else style="display: inline-block; margin-right: 5px;">
+      <v-icon>{{ language }}</v-icon>
+    </div>
+    <template v-if="index !== Object.keys(languages).length - 1">, </template>
+  </span>
+</div>
+
   </template>
   
 
@@ -25,7 +32,7 @@ export default {
     components: {
         ProjectButton
     },
-    props: {
+    props: {    
         image: String,
         title: String,
         description: String,
