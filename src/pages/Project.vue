@@ -13,18 +13,17 @@
       </div>
     </div>
     <div style="display: flex; align-items: center;">
-  <span v-for="(language, key, index) in languages" :key="key">
-    <div v-if="language.includes('/img/')" style="display: inline-block; margin-right: 5px;">
-      <img :src="language" :alt="key" :style="{ width: '24px', height: '24px', filter: 'brightness(0) invert(1)', marginTop: '10px', marginLeft: '3px' }" />
-    </div>
-    <div v-else style="display: inline-block; margin-right: 5px;">
-      <v-icon>{{ language }}</v-icon>
-    </div>
-    <template v-if="index !== Object.keys(languages).length - 1">, </template>
-  </span>
-</div>
-
-  </template>
+    <span v-for="(language, key, index) in languages" :key="key">
+      <div v-if="language.includes('/img/')" style="display: inline-block; margin-right: 5px;">
+        <img :src="language" :alt="key" :style="{ width: '24px', height: '24px', filter: 'brightness(0) invert(1)', marginTop: '10px', marginLeft: '3px' }" />
+      </div>
+      <div v-else style="display: inline-block; margin-right: 5px;">
+        <v-icon>{{ language }}</v-icon>
+      </div>
+      <template v-if="index !== Object.keys(languages).length - 1">  </template>
+    </span>
+  </div>
+</template>
   
 
 <script>

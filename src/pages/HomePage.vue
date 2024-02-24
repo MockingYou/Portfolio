@@ -6,10 +6,10 @@
             </div>
             <div class="right-header">
                 <h1 class="name">
-                    Hi, I'm <span>Vlad .</span>
+                    Hi, I'm <span>Vlad.</span>
                 </h1>
                 <p>
-                    Hey, my name is Vlad Mocanu. I am a junior software developer working mainly in web development.
+                    Hey, my name is Vlad Mocanu. I am a software developer working mainly in web development.
                 </p>
                 <div class="btn-con">
                     <DownloadButton />
