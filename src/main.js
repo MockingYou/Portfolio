@@ -4,7 +4,7 @@ import { loadFonts } from './plugins/webfontloader'
 import vuetify from './plugins/vuetify'
 
 import App from './App.vue'
-import router from './router'
+import router from './router/router'
 import BaseButton from './components/ui/BaseButton.vue';
 import { useStore } from './store'; 
 
@@ -21,7 +21,6 @@ const fetchProjects = async () => {
     console.log("Error fetching projects:", error);
   }
 };
-
 
 (async () => {
   await fetchProjects();

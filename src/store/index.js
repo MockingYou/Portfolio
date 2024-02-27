@@ -10,11 +10,11 @@ export const useStore = defineStore({
   actions: {
     async fetchProjects() {
       try {
-        this.loading = true; // Corrected: Referencing 'loading' with 'this'
+        this.loading = true; 
         const response = await axios.get('https://portfolio-service-1j6y.onrender.com/api/Project/GetAll');
         const projects = response.data.data;
         this.setProjects(projects);
-        this.loading = false; // Corrected: Referencing 'loading' with 'this'
+        this.loading = false; 
         return projects; 
       } catch (error) {
         console.error('Error fetching projects:', error);
@@ -23,6 +23,6 @@ export const useStore = defineStore({
     },
     setProjects(projects) {
       this.projects = projects;
-    }
+    },
   }
 });
