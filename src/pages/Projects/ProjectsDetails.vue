@@ -5,11 +5,10 @@
             <v-icon class="chevron">mdi-chevron-right</v-icon>
             <p class="history-title">{{ projectData.title }}</p>
         </div>
-        <h2>Project Details</h2>
         <Spinner v-if="loading"/>
         <div v-else>
-            <div class="image">
-                <img :src="projectData.imageName" alt=""/>
+            <div class="slider">
+                <ImageSlider :image="projectData.imageName" />
             </div>
             <h3>{{ projectData.title }}</h3>
             <p>{{ projectData.description }}</p>
@@ -19,6 +18,7 @@
 
 <script>
 import Spinner from '../../components/ui/Spinner.vue';
+import ImageSlider from '../../components/ImageSlider.vue'
 import router from '../../router/router'
 import axios from 'axios';
 
@@ -33,7 +33,8 @@ export default {
         };
     },
     components: {
-        Spinner
+        Spinner,
+        ImageSlider
     },
     methods: {
         async fetchProjectDetails() {
@@ -65,6 +66,10 @@ export default {
     text-align: center;
 }
 
+.slider {
+    width: 600px;
+    height: 500px;
+}
 .image img {
     width: 100%;
     height: 300px;
