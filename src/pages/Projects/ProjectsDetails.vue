@@ -6,12 +6,16 @@
             <p class="history-title">{{ projectData.title }}</p>
         </div>
         <Spinner v-if="loading"/>
-        <div v-else>
+        <div class="project-data" v-else>
             <div class="slider">
                 <ImageSlider :image="projectData.imageName" />
             </div>
             <h3>{{ projectData.title }}</h3>
             <p>{{ projectData.description }}</p>
+            <a :href="projectData.link" target="_blank">
+                <v-icon>{{ projectData.icon }}</v-icon>
+                <p>{{projectData.link}}</p>
+            </a>
         </div>
     </div>
 </template>
@@ -67,7 +71,10 @@ export default {
 }
 
 .slider {
-    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    width: 800px;
     height: 500px;
 }
 .image img {
@@ -85,7 +92,7 @@ export default {
 .history {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     margin-bottom: 20px;
 }
 
@@ -97,5 +104,11 @@ export default {
 
 .chevron {
     color: white;
+}
+
+.project-data {
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 </style>
