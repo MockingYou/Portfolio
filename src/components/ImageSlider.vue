@@ -19,9 +19,9 @@
 	  	<swiper-slide>
 			<img :src="image" alt=""/>
 		</swiper-slide>
-	  	<swiper-slide>Slide 3</swiper-slide>
-	  	<swiper-slide>Slide 5</swiper-slide>
-	  	<swiper-slide>Slide 7</swiper-slide>
+	  	<swiper-slide><img :src="image" alt=""/></swiper-slide>
+	  	<swiper-slide><img :src="image" alt=""/></swiper-slide>
+	  	<swiper-slide><img :src="image" alt=""/></swiper-slide>
 
 	</swiper>
 </template>
