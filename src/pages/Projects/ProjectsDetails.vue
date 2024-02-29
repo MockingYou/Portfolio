@@ -11,36 +11,46 @@
                 <ImageSlider :image="projectData.imageName" />
             </div>
             <h2>{{ projectData.title }}</h2>
-            <p>{{ projectData.description }}</p>
+            <p>{{ projectData.detailedDescription }}</p>
             <div class="details-panel">
                 <div class="details">
-                    <h3> <v-icon class="title-icon">mdi mdi-devices</v-icon> Made for</h3>    
+                    <h3> <v-icon class="title-icon">mdi mdi-devices</v-icon>Platform</h3>    
+                    <p> This application was made for <span class="platform">{{ projectData.platform }}</span>.</p>
                 </div>
                 <div class="details">
-                    <h3> <v-icon class="title-icon">mdi mdi-file-code</v-icon> Built with </h3>
+                    <h3> <v-icon class="title-icon">mdi mdi-file-code</v-icon>Built with</h3>
                     <span>
                         <p>{{ parsedLanguages }}</p>
                     </span>
                 </div>
                 <div class="details">
-                    <h3> <v-icon class="title-icon">mdi-git</v-icon> Source code</h3>
+                    <h3> <v-icon class="title-icon">mdi-git</v-icon>Source code</h3>
+                    <p v-if="projectData.sourceCode === null">N/A</p>
+                    <a :href="projectData.sourceCode" target="_blank" class="project-link" v-else>
+                        <p>{{ projectData.sourceCode }}</p>
+                    </a>
                 </div>
                 <div class="details">
-                    <h3> <v-icon class="title-icon">mdi-open-in-new</v-icon> Deployed on</h3>
-                    <a :href="projectData.link" target="_blank" class="project-link">
+                    <h3> <v-icon class="title-icon">mdi-open-in-new</v-icon>Deployed on</h3>
+                    <p v-if="projectData.link === ''">N/A</p>
+                    <a :href="projectData.link" target="_blank" class="project-link" v-else>
                         <p>{{ projectData.link }}</p>
                     </a>
                 </div>
             </div>
         </div>
+        <Toast :type="toast.type" :message="toast.message" :duration="toast.duration" :icon="toast.icon" v-if="toast.visible" />
     </div>
 </template>
 
 <script>
 import Spinner from "../../components/ui/Spinner.vue";
 import ImageSlider from "../../components/ImageSlider.vue";
+import Toast from '../../components/ui/Toast.vue';
 import router from "../../router/router";
 import axios from "axios";
+import { showToast } from '../../utils/toast';
+
 
 export default {
     props: {
@@ -51,11 +61,19 @@ export default {
             loading: true,
             projectData: {},
             parsedLanguages: "",
+            toast: {
+                type: '',
+                message: '',
+                duration: 3000,
+                visible: false,
+                icon: '',
+            }
         };
     },
     components: {
         Spinner,
         ImageSlider,
+        Toast
     },
     methods: {
         async fetchProjectDetails() {
@@ -67,6 +85,7 @@ export default {
                 this.parseLanguages();
             } catch (error) {
                 console.error("Error fetching project:", error);
+                this.showToast('error', error.message, 'mdi-alert-outline');
             } finally {
                 this.loading = false;
             }
@@ -82,6 +101,9 @@ export default {
                 console.error("Error parsing languages:", error);
             }
         },
+        showToast(type, message, icon) {
+            this.toast = showToast(type, message, 3000, icon);
+        }
     },
     mounted() {
         this.fetchProjectDetails();
@@ -176,6 +198,10 @@ export default {
     text-align: center;
     justify-items: center;
     align-items: center; 
+}
 
+.platform {
+    color:#039be5;
+    font-weight: 700;
 }
 </style>

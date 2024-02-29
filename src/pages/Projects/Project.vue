@@ -9,7 +9,7 @@
 
         <div v-text="title" />
         <div class="project-desc" v-text="description" />
-        <ProjectButton :link="link" :icon="icon" />
+        <!-- <ProjectButton :link="link" :icon="icon" /> -->
       </div>
     </div>
     <div style="display: flex; align-items: center;">

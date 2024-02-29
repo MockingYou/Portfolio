@@ -16,6 +16,7 @@
                 </div>
             </div>
         </div>
+        <Toast :type="toast.type" :message="toast.message" :duration="toast.duration" :icon="toast.icon" v-if="toast.visible" />
     </section>
 </template>
 
@@ -23,18 +24,21 @@
 import { defineComponent } from 'vue';
 import Project from './Projects/Project.vue';
 import Spinner from '../components/ui/Spinner.vue';
+import Toast from '../components/ui/Toast.vue'
 import { useStore } from '../store'; 
 import { useRouter } from 'vue-router';
 
 export default defineComponent({
     components: {
         Project,
-        Spinner
+        Spinner,
+        Toast
     },
     setup() {
         const store = useStore(); 
         const projects = store.projects; 
         const loading = store.loading;
+        const toast = store.toast;
         const router = useRouter();
         const goToProject = (projectId) => {
             router.push({ name: 'projectDetail', params: { id: projectId } });
@@ -42,6 +46,7 @@ export default defineComponent({
         return {
             projects,
             loading,
+            toast,
             goToProject
         };
     }

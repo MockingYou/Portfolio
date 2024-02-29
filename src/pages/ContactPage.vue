@@ -95,6 +95,7 @@
 <script>
 import axios from 'axios'
 import Toast from '../components/ui/Toast.vue';
+import { showToast } from '../utils/toast';
 
 export default {
   data() {
@@ -153,16 +154,9 @@ export default {
             }
         },
         showToast(type, message, icon) {
-        this.toast.type = type;
-        this.toast.message = message;
-        this.toast.visible = true;
-        this.toast.icon = icon;
-            
-        setTimeout(() => {
-          this.toast.visible = false;
-        }, this.toast.duration);
-    }
-  },
+            this.toast = showToast(type, message, 3000, icon);
+        }
+    },
 };
 </script>
 

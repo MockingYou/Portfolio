@@ -6,6 +6,9 @@
 		:loop="true" 
 		:grabCursor="true"
 		:pagination="true"
+		:autoplay="{
+			delay: 5000
+		}"
 		:cubeEffect="{
 			shadow: true,
 			slideShadow: true,
@@ -24,10 +27,11 @@
 </template>
 <script>
 	import { Swiper, SwiperSlide } from 'swiper/vue';
-	import { EffectCube, Pagination } from 'swiper/modules';
+	import { EffectCube, Pagination, Autoplay } from 'swiper/modules';
 	import 'swiper/css';
 	import 'swiper/css/effect-cube'
 	import 'swiper/css/pagination'
+	import 'swiper/css/autoplay'
   
 	export default {
 		props: {
@@ -39,7 +43,7 @@
 	  	},
 	  	setup() {
 			return {
-		  		modules: [EffectCube, Pagination],
+		  		modules: [EffectCube, Pagination, Autoplay],
 			};
 	  	},
 	};
