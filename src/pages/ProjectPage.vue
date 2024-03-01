@@ -12,7 +12,7 @@
             <Spinner v-if="loading"/>
             <div class="portfolios">
                 <div class="portfolio-item" v-for="project in projects" :key="project.title" @click="goToProject(project.id)">
-                    <Project :image="project.imageName" :title="project.title" :description="project.description" :link="project.link" :icon="project.icon" :languages="JSON.parse(project.languages)" />
+                    <Project :image="JSON.parse(project.imageNames).img1" :title="project.title" :description="project.description" :link="project.link" :icon="project.icon" :languages="JSON.parse(project.languages)" />
                 </div>
             </div>
         </div>

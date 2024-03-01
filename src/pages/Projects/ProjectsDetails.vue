@@ -1,5 +1,7 @@
 <template>
-    <div class="body">
+    <section class="section sec5 active" id="details">
+        <div class="gradient-box-top"></div>
+        <div class="gradient-box-bottom"></div>
         <div class="history">
             <button class="back-button" @click="goBack()">Projects</button>
             <v-icon class="chevron">mdi-chevron-right</v-icon>
@@ -8,7 +10,7 @@
         <Spinner v-if="loading" />
         <div class="project-data" v-else>
             <div class="slider">
-                <ImageSlider :image="projectData.imageName" />
+                <ImageSlider :images="images" />
             </div>
             <h2>{{ projectData.title }}</h2>
             <p>{{ projectData.detailedDescription }}</p>
@@ -40,7 +42,7 @@
             </div>
         </div>
         <Toast :type="toast.type" :message="toast.message" :duration="toast.duration" :icon="toast.icon" v-if="toast.visible" />
-    </div>
+    </section>
 </template>
 
 <script>
@@ -61,6 +63,7 @@ export default {
             loading: true,
             projectData: {},
             parsedLanguages: "",
+            images: {},
             toast: {
                 type: '',
                 message: '',
@@ -82,6 +85,15 @@ export default {
                     `https://portfolio-service-1j6y.onrender.com/api/Project/${this.id}`
                 );
                 this.projectData = response.data.data;
+                let parsedImages = JSON.parse(this.projectData.imageNames)
+                const imagesLength = Object.keys(parsedImages).length
+                if(imagesLength < 4) {
+                    for(let i = imagesLength + 1; i <= 4; i++) {
+                        let index = `img${i}`;
+                        parsedImages[index] = parsedImages.img1
+				    }
+			    }
+                this.images = parsedImages;
                 this.parseLanguages();
             } catch (error) {
                 console.error("Error fetching project:", error);
@@ -103,7 +115,7 @@ export default {
         },
         showToast(type, message, icon) {
             this.toast = showToast(type, message, 3000, icon);
-        }
+        },
     },
     mounted() {
         this.fetchProjectDetails();
@@ -112,29 +124,19 @@ export default {
 </script>
 
 <style scoped>
-.body {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    margin-top: 100px;
-}
 
 .slider {
     align-items: center;
     justify-items: center;
-    width: 600px;
-    height: 600px;
+    width: 650px;
+    height: 550px;
     margin-bottom: 50px;
 }
-.image img {
-    width: 100%;
-    height: 300px;
-    border-radius: 15px;
+@media (max-width: 768px) {
+    .slider {
+        width: 300px;
+        height: 200px;
+    }
 }
 
 .back-button {

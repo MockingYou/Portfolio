@@ -182,6 +182,12 @@ section {
           transform: translateY(0) scale(1);
 }
 
+.sec5 {
+  display: none;
+  -webkit-transform: translateY(0) scale(1);
+          transform: translateY(0) scale(1);
+}
+
 .active {
   display: block;
 }

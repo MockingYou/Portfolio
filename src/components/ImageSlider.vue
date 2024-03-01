@@ -5,9 +5,11 @@
 		:modules="modules" 
 		:loop="true" 
 		:grabCursor="true"
-		:pagination="true"
+		:pagination="{
+			clickable: true
+		}"
 		:autoplay="{
-			delay: 5000
+			delay: 3500
 		}"
 		:cubeEffect="{
 			shadow: true,
@@ -16,13 +18,9 @@
 			shadowScale: 0.94,
 		}"
 	>
-	  	<swiper-slide>
+	  	<swiper-slide v-for="image in images">
 			<img :src="image" alt=""/>
 		</swiper-slide>
-	  	<swiper-slide><img :src="image" alt=""/></swiper-slide>
-	  	<swiper-slide><img :src="image" alt=""/></swiper-slide>
-	  	<swiper-slide><img :src="image" alt=""/></swiper-slide>
-
 	</swiper>
 </template>
 <script>
@@ -35,7 +33,7 @@
   
 	export default {
 		props: {
-        	image: String
+        	images: Object
     	},
 	  	components: {
 			Swiper,
@@ -55,17 +53,17 @@
   height: 100%;
   overflow: visible;
 }
-/* .swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 .swiper-slide img {
-  /* display: block; */
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.swiper-slide.aspect-ratio {
+  position: relative;
+  overflow: hidden;
 }
 </style>
