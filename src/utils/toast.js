@@ -10,7 +10,6 @@ export function showToast(type, message, duration = 3000, icon = '') {
 	setTimeout(() => {
 	  toast.visible = false;
 	}, duration);
-  
 	return toast;
   }
   

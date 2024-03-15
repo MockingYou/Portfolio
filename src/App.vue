@@ -13,8 +13,8 @@
       </base-button>
     </div>
    </div>
-   <div class="theme-btn">
-     <theme-button @click="updateTheme"></theme-button>  
+   <div class="theme-btn" @click="updateTheme">
+     <theme-button ></theme-button>  
    </div>
   <div class="right-controls">
     <div v-for="button in buttonsRight" :class="button.buttonClass">
@@ -110,6 +110,10 @@ export default {
 
   },
   mounted() {
+    // const savedRoute = localStorage.getItem('currentRoute');
+    // if (savedRoute) {
+    //   this.$router.push(savedRoute);
+    // }
       if(localStorage.getItem('theme')) {
         let element = document.body;
         element.classList.toggle('light-mode')

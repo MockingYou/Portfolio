@@ -128,7 +128,7 @@ export default {
 .slider {
     align-items: center;
     justify-items: center;
-    width: 650px;
+    width: 750px;
     height: 550px;
     margin-bottom: 50px;
 }
@@ -138,30 +138,12 @@ export default {
         height: 200px;
     }
 }
-
-.back-button {
-    color: white;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
 .history {
     display: flex;
     align-items: center;
     justify-content: left;
     margin-bottom: 20px;
 }
-
-.history p {
-    color: #039be5;
-    padding: 10px;
-    font-weight: bold;
-}
-
-.chevron {
-    color: white;
-}
-
 .project-data {
     display: flex;
     flex-direction: column; 
@@ -179,22 +161,20 @@ export default {
     gap: 20px;
     justify-items: center;
 }
+@media (max-width: 768px) {
+    .details-panel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+}
 .project-link {
     text-decoration: none;
 }
 .project-link:hover,
 .project-link:focus ,
-.project-link:active {
-    background-color: unset !important;
-    text-decoration: none !important;
-    outline: none !important;
-    color:#039be5;
-}
-.title-icon {
-    color:#039be5;
-    font-size: 30px;
-    margin-right: 10px;
-}
+
 .details {
     justify-content: center;
     text-align: center;
@@ -202,8 +182,5 @@ export default {
     align-items: center; 
 }
 
-.platform {
-    color:#039be5;
-    font-weight: 700;
-}
+
 </style>

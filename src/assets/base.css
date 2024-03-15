@@ -44,6 +44,7 @@
   position: absolute;
   width: 20px; 
   height: 20px; 
+  z-index: 0;
 }
 
 .gradient-box-top::before {
@@ -197,6 +198,37 @@ section {
           transform: translateY(-3px);
 }
 
+
+.history p {
+  color: var(--color-secondary);
+  padding: 10px;
+  font-weight: bold;
+}
+.back-button {
+  color: var(--color-white);
+  cursor: pointer;
+  margin-right: 10px;
+  z-index: 11;
+}
+.chevron {
+  color: var(--color-white);
+}
+.project-link:active {
+  background-color: unset !important;
+  text-decoration: none !important;
+  outline: none !important;
+  color:var(--color-secondary);
+}
+.title-icon {
+  color:var(--color-secondary);
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.platform {
+  color:var(--color-secondary);
+  font-weight: 700;
+}
 .controls {
   position: fixed;
   z-index: 10;
@@ -975,6 +1007,11 @@ section {
   .theme-btn {
     width: 35px;
     height: 35px;
+  }
+  .theme-btn i {
+    font-size: 1.1rem;
+    color: var(--color-grey-2);
+    pointer-events: all;
   }
   .header-content {
     -ms-grid-columns: (1fr)[1];
