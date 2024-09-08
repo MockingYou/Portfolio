@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
-import { showToast } from '../utils/toast'; 
+import { showToast } from '../utils/toast';
 
 export const useStore = defineStore({
   id: 'main',
@@ -8,25 +8,24 @@ export const useStore = defineStore({
     projects: [],
     loading: false,
     toast: {
-        type: '',
-        message: '',
-        duration: 3000,
-        visible: false,
-        icon: '',
+      type: '',
+      message: '',
+      duration: 3000,
+      visible: false,
+      icon: '',
     },
   }),
   actions: {
     async fetchProjects() {
       try {
-        this.loading = true; 
+        this.loading = true;
         const response = await axios.get('https://portfolio-service-1j6y.onrender.com/api/Project/GetAll');
         const projects = response.data.data;
         this.setProjects(projects);
         this.loading = false;
-        return projects; 
+        return projects;
       } catch (error) {
-        // console.error('Error fetching projects:', error.response.data.errors.id[0]);
-        this.showToast( 'error', 'Error fetching projects. Please try again later.',  'mdi-alert-outline');
+        this.showToast('error', 'Error fetching projects. Please try again later.', 'mdi-alert-outline');
         throw error.response.data.errors.id[0];
       }
     },
